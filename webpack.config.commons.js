@@ -49,11 +49,6 @@ module.exports = env => {
         template: './src/index.html',
         filename: 'index.html'
       }),
-      new webpack.DefinePlugin({
-        'process.env': {
-          NODE_ENV: JSON.stringify('development'),
-        }
-      }),
       new WebpackMd5Hash(),
       new webpack.HotModuleReplacementPlugin(),
       new Dotenv(),
