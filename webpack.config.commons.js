@@ -35,6 +35,26 @@ module.exports = env => {
            'postcss-loader',
            'sass-loader'
          ]
+       },
+       {
+         test: /\.svg$/,
+         use: [
+           {
+             loader: 'babel-loader'
+           },
+           {
+             loader: 'react-svg-loader',
+             options: {
+               jsx: true,
+               svgo: {
+                 plugins: [
+                   { removeTitle: false }
+                 ],
+                 floatPrecision: 2
+               }
+             }
+           }
+         ]
        }
      ]
     },
