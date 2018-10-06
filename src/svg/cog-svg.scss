@@ -1,0 +1,36 @@
+#cog-big {
+  position: absolute;
+  right: 0px;
+  .cog {
+    transform-origin: center;
+    animation: spin 10s linear infinite;
+  }
+}
+
+#cog-small {
+  position: absolute;
+  top: 6px;
+  left: 0px;
+  .cog {
+    transform-origin: center;
+    animation: spin 10s linear reverse infinite;
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+// @keyframes spin-counter-clockwise {
+//     from {
+//       transform: rotate(0deg);
+//     }
+//     to {
+//       transform: rotate(-360deg);
+//     }
+//   }
