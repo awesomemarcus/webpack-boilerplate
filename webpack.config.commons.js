@@ -27,6 +27,19 @@ module.exports = env => {
          }
        },
        {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            },
+          },
+          'postcss-loader', // add a vendor prefixes to your css
+        ],
+       },
+       {
          test: /\.(scss|sass)$/,
          use: [
            'style-loader',

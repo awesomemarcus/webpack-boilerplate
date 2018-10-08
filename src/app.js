@@ -7,7 +7,7 @@ import Routes from './routes';
 class App extends React.Component {
     render() {
       return (
-        <div className="container-fluid">
+        <div className="">
           <Routes />
         </div>
       );
