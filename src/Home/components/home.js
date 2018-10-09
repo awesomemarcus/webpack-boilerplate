@@ -22,7 +22,7 @@ import enUs from 'antd-mobile/lib/date-picker/locale/en_US';
 import List from 'antd-mobile/lib/list';
 import 'antd-mobile/lib/list/style/css';
 import Forms from '../../Forms/components/forms';
-
+import QueueAnim from 'rc-queue-anim';
 const Item = Popover.Item;
 const myImg = src => <img src={`https://gw.alipayobjects.com/zos/rmsportal/${src}.svg`} className="am-icon am-icon-xs" alt="" />;
 const nowTimeStamp = Date.now();
@@ -71,114 +71,119 @@ export default class Home extends React.Component {
 
   render() {
     return (
-      <div>
-        <NavBar
-          className="hey"
-          mode="dark"
-          icon={<Icon type="left" />}
-          onLeftClick={() => console.log('onLeftClick')}
-          rightContent={
-            <Popover mask
-              overlayClassName="fortest"
-              overlayStyle={{ color: 'currentColor' }}
-              visible={this.state.visible}
-              overlay={[
-                (<Item key="4" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
-                (<Item key="5" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
-                (<Item key="6" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
-                  <span style={{ marginRight: 5 }}>Help</span>
-                </Item>),
-              ]}
-              align={{
-                overflow: { adjustY: 0, adjustX: 0 },
-                offset: [-10, 0],
-              }}
-              onVisibleChange={this.handleVisibleChange}
-              onSelect={this.onSelect}>
-              <div style={{
-                height: '100%',
-                padding: '0 15px',
-                marginRight: '-15px',
-                display: 'flex',
-                alignItems: 'center',
-              }}>
-                <Icon type="ellipsis" />
-              </div>
-          </Popover>
-          }
-        >NavBar</NavBar>
-        <div className="flex-container">
-          <Flex
-            direction={'column'}>
-            <Flex.Item className="w-100">
-              <WingBlank size="lg">
-                <WhiteSpace size="lg"/>
-                <Card full>
-                  <Card.Body className="p-0">
-                    <Carousel
-                      autoplay={true}
-                      infinite
-                      beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
-                      afterChange={index => console.log(`slide to ${index}`)}>
-                      {this.state.data.map(val => (
-                        <a
-                          href=""
-                          key={val}
-                          style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight, touchAction: 'manipulation'}}>
-                          <img
-                            src={`https://picsum.photos/200/200`}
-                            alt=""
-                            style={{ width: '100%', verticalAlign: 'top' }}
-                            onLoad={() => {
-                              // fire window resize event to change height
-                              window.dispatchEvent(new Event('resize'));
-                              this.setState({ imgHeight: 'auto' });
-                            }}
-                          />
-                        </a>
-                      ))}
+        <QueueAnim>
+          <NavBar
+            key="1"
+            className="hey"
+            mode="dark"
+            icon={<Icon type="left" />}
+            onLeftClick={() => console.log('onLeftClick')}
+            rightContent={
+              <Popover
+                overlayClassName="fortest"
+                overlayStyle={{ color: 'currentColor', right: 0 }}
+                visible={this.state.visible}
+                overlay={[
+                  (<Item key="3" value="scan" icon={myImg('tOtXhkIWzwotgGSeptou')} data-seed="logId">Scan</Item>),
+                  (<Item key="4" value="special" icon={myImg('PKAgAqZWJVNwKsAJSmXd')} style={{ whiteSpace: 'nowrap' }}>My Qrcode</Item>),
+                  (<Item key="5" value="button ct" icon={myImg('uQIYTFeRrjPELImDRrPt')}>
+                    <span style={{ marginRight: 5 }}>Help</span>
+                  </Item>)
+                ]}
+                align={{
+                  overflow: { adjustY: 0, adjustX: 0 },
+                  offset: [-10, 0],
+                }}
+                onVisibleChange={this.handleVisibleChange}
+                onSelect={this.onSelect}>
+                <div style={{
+                  height: '100%',
+                  padding: '0 15px',
+                  marginRight: '-15px',
+                  display: 'flex',
+                  alignItems: 'center',
+                }}>
+                  <Icon type="ellipsis" />
+                </div>
+            </Popover>
+            }
+          >NavBar</NavBar>
+          <QueueAnim
+            key="2"
+            delay={1000}>
+            <div className="flex-container">
+              <Flex
+                direction={'column'}>
+                <Flex.Item className="w-100">
+                  <WingBlank size="lg">
+                    <WhiteSpace size="lg"/>
+                    <Card full>
+                      <Card.Body className="p-0">
+                        <Carousel
+                          autoplay={true}
+                          infinite
+                          beforeChange={(from, to) => console.log(`slide from ${from} to ${to}`)}
+                          afterChange={index => console.log(`slide to ${index}`)}>
+                          {this.state.data.map(val => (
+                            <a
+                              href=""
+                              key={val}
+                              style={{ display: 'inline-block', width: '100%', height: this.state.imgHeight, touchAction: 'manipulation'}}>
+                              <img
+                                src={`https://picsum.photos/200/200`}
+                                alt=""
+                                style={{ width: '100%', verticalAlign: 'top' }}
+                                onLoad={() => {
+                                  // fire window resize event to change height
+                                  window.dispatchEvent(new Event('resize'));
+                                  this.setState({ imgHeight: 'auto' });
+                                }}
+                              />
+                            </a>
+                          ))}
 
-                    </Carousel>
-                  </Card.Body>
-                  <Card.Body className="p-2">
-                    <h5 className="m-0"><strong>Ickyrr Sama</strong></h5>
-                    <p className="m-0"><small>Lorem ipsum dolor sit amet.</small></p>
-                    <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ratione eaque incidunt corporis eligendi porro aut fugit quas? Minima, eos!</p>
-                  </Card.Body>
-                </Card>
-              </WingBlank>
-            </Flex.Item>
-            <Flex.Item className="w-100">
-              <WingBlank size="lg">
-                <WhiteSpace size="lg"/>
-                <Card>
-                  <Card.Body className="p-2">
-                  <DatePicker
-                    mode="date"
-                    locale={enUs}
-                    title="Select Date"
-                    extra="Optional"
-                    value={this.state.date}
-                    onChange={date => this.setState({ date }, () => { console.log(this.state.date) })}>
-                    <List.Item arrow="horizontal">Date</List.Item>
-                  </DatePicker>
-                  </Card.Body>
-                </Card>
-              </WingBlank>
-            </Flex.Item>
-            <Flex.Item className="w-100">
-              <WingBlank size="lg">
-                <WhiteSpace size="lg"/>
-                <Card>
-                  <Card.Body className="p-2">
-                    <Forms/>
-                  </Card.Body>
-                </Card>
-              </WingBlank>
-            </Flex.Item>
-          </Flex>
-        </div>
-      </div>
+                        </Carousel>
+                      </Card.Body>
+                      <Card.Body className="p-2">
+                        <h5 className="m-0"><strong>Ickyrr Sama</strong></h5>
+                        <p className="m-0"><small>Lorem ipsum dolor sit amet.</small></p>
+                        <p className="mb-0">Lorem ipsum dolor sit amet consectetur adipisicing elit. Laboriosam ratione eaque incidunt corporis eligendi porro aut fugit quas? Minima, eos!</p>
+                      </Card.Body>
+                    </Card>
+                  </WingBlank>
+                </Flex.Item>
+                <Flex.Item className="w-100">
+                  <WingBlank size="lg">
+                    <WhiteSpace size="lg"/>
+                    <Card>
+                      <Card.Body className="p-2">
+                      <DatePicker
+                        mode="date"
+                        locale={enUs}
+                        title="Select Date"
+                        extra="Optional"
+                        value={this.state.date}
+                        onChange={date => this.setState({ date }, () => { console.log(this.state.date) })}>
+                        <List.Item arrow="horizontal">Date</List.Item>
+                      </DatePicker>
+                      </Card.Body>
+                    </Card>
+                  </WingBlank>
+                </Flex.Item>
+                <Flex.Item className="w-100">
+                  <WingBlank size="lg">
+                    <WhiteSpace size="lg"/>
+                    <Card>
+                      <Card.Body className="p-2">
+                        <Forms/>
+                      </Card.Body>
+                    </Card>
+                  </WingBlank>
+                </Flex.Item>
+              </Flex>
+            </div>
+            </QueueAnim>
+        </QueueAnim>
     );
   }
 }
